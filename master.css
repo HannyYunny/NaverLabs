@@ -197,10 +197,77 @@ body.menustyle #toggle li a {
 	overflow: hidden;
 	background-color: #000;
 }
-#scenes {
-	background: url(./img/movie-still-cut-0OZBVFrKWx0.jpg);
-	max-width: 100%;
-	height: 1006px;
+#scenes .background .cover {
+	position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  opacity: 1;
+  transition: opacity 1s;
+}
+#scenes .background .cover:before {
+	content: "";
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url(./img/dotted_background.png)
+}
+.scene-information {
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	left: 50%;
+	width: 320px;
+	height: 160px;
+	color: #fff;
+	text-align: center;
+	margin: -80px 0 0 -160px;
+}
+.scene-information h2 {
+  font-size: 2.8em;
+  margin: 0 0 5px;
+  text-transform: uppercase;
+  line-height: 1.05;
+  font-weight: 700;
+  font-family: Roboto,sans-serif;
+  letter-spacing: .08em;
+  color: #fff;
+}
+.scene-information p {
+  font-size: 1.05em;
+  line-height: 1.6;
+  color: #c2c2c2;
+}
+.scene-information .show-movie {
+	margin: 24px 0 0;
+	text-align: center;
+}
+.scene-information .show-movie button {
+	border: solid 1px #fff;
+	text-align: center;
+  position: relative;
+  z-index: 1;
+  background: 0 0;
+  display: inline-block;
+  opacity: 1;
+  color: #fff;
+  font-size: 1em;
+  text-transform: uppercase;
+  padding: 1.05em 2.2em;
+  letter-spacing: 2px;
+  font-weight: 400;
+  transition: border-color .15s;
+  animation-name: reveal-button;
+  animation-duration: 1.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 .scene-controller {
 	text-align: center;
@@ -245,7 +312,6 @@ body.menustyle #toggle li a {
  .scene-controller .previous, .scene-controller .next {
  	display: none;
  }
-
 
 /* container */
 #container {
@@ -635,6 +701,46 @@ body.menustyle #footer p {
 	.menu button { display: none;}
 	
 	/* main-visual*/
+	.scene-information {
+		margin: -140px 0 0 -350px;
+		width: 700px;
+		height: 280px;
+	}
+	.scene-information h2 {
+	  font-size: 5.2em;
+    margin: 0 0 11px;
+    text-transform: uppercase;
+    line-height: 1.05;
+    font-weight: 700;
+    font-family: Roboto,sans-serif;
+    letter-spacing: .08em;
+    color: #fff;
+	}
+ 	.scene-information p {
+  	font-size: 1.4em;
+  }
+  .scene-information button {
+    font-size: 1em;
+    width: 197px;
+    padding: .85em 0 .8em;
+  }
+  .scene-information .show-movie button:hover {
+  	border: transparent;
+  }
+  .scene-information .show-movie button:before {
+  	width: 0;
+  	background: #0078ff;
+  	content: '';
+  	position: absolute;
+  	z-index: -1;
+		top: 0;
+		left: 0;
+		height: 100%;
+		transition: width .15s
+  }
+  .scene-information .show-movie button:hover:before {
+  	width: 100%;
+  }  
 	.scene-indicator {
 	  bottom: 38px;
 	  width: 700px;
