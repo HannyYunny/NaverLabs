@@ -7,6 +7,9 @@
 button {
 	outline: 0;
 }
+html, body {
+	height: 100%;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -79,11 +82,11 @@ img {
 
 /* header */
 
-/*#header:after {
+#header:after {
 	content: "";
 	clear: both;
 	display: block;
-}*/
+}
 #header {
 	position: absolute;
 	z-index: 10;
@@ -136,11 +139,11 @@ img {
 
 
 /* menu */
-/*.menu ul:after {
+.menu ul:after {
 	content: "";
 	clear: both;
 	display: block
-}*/
+}
 #toggle {
 	display: none;
 }
@@ -196,6 +199,25 @@ body.menustyle #toggle li a {
 	height: 100%;
 	overflow: hidden;
 	background-color: #000;
+}
+#scenes {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#scenes .scene {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 #scenes .background .cover {
 	position: absolute;
