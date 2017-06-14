@@ -29,7 +29,10 @@ document.getElementById('myButton').onclick = function() {
     }
 }
 
-
+//Add animate class
+function add_ani() {
+	document.getElementById('scenes').classList.toggle("animate", true);
+}
 
 
 //width, height 구해서 .background에 추가하기
@@ -88,6 +91,7 @@ window.onload=function toggle_on() {
 
 //previous, next click
 document.getElementsByClassName('next')[0].onclick = function() {
+	add_ani()
 	var mywidth = window.innerWidth;
 	var element_left = document.getElementById('scenes');
 	var left_value = parseInt(window.getComputedStyle(element_left,null).getPropertyValue("left"));
@@ -96,14 +100,15 @@ document.getElementsByClassName('next')[0].onclick = function() {
 	left_value = left_value + 15 - mywidth + "px";
 	element_left.style.left = left_value;
 	var left_number = parseInt(window.getComputedStyle(element_left,null).getPropertyValue("left"));
-		if (left_number != 0) {
-			previous_on[0].classList.toggle("on", true);
+		if (left_number >= 0) {
+			previous_on[0].classList.add("on");
 		}
-		if (left_number == 5*(15-mywidth)) {
+		if (left_number == 4*(15-mywidth)) {
 			next_on[0].classList.remove("on");
-		}		
+		}
 }
 document.getElementsByClassName('previous')[0].onclick = function() {
+	add_ani()
 	var mywidth = window.innerWidth;
 	var element_left = document.getElementById('scenes');
 	var left_value = parseInt(window.getComputedStyle(element_left,null).getPropertyValue("left"));
@@ -112,14 +117,24 @@ document.getElementsByClassName('previous')[0].onclick = function() {
 	left_value = left_value - 15 + mywidth + "px";
 	element_left.style.left = left_value;
 	var left_number = parseInt(window.getComputedStyle(element_left,null).getPropertyValue("left"));
-		if (left_value != (15-mywidth)*5) {
+		if (left_number != (15-mywidth)*4) {
 			next_on[0].classList.add("on");
 		}
-		if (left_number == 0) {
+		if (left_number == (15-mywidth)) {
 			previous_on[0].classList.remove("on");
-		}		
+		}	
+	add_ani()
 }
 
+document.getElementById('scenes').onclick = function() {add_ani()}
+// var cont = document.getElementsByClassName('scene-controller')[0];
+// for (var b = 0; b<cont.getElementsByTagName('button').length; b++) {
+// 	cont.getElementsByTagName('button')[b].onclick = function() {
+// 		document.getElementById('scenes').classList.add('animate')
+// 	}
+// }
+
+// console.log(document.getElementsByClassName('scene-controller')[0].getElementsByTagName('button')[0])
 
 // function div2Resize() {
 //    var div2 = document.getElementById('div2');
