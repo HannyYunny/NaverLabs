@@ -80,10 +80,9 @@ window.onload=function toggle_on() {
 	    //remove on	
 		if (left_value == 0) {
 			previous_on[0].classList.remove("on");
-			break;
 		}
-		else {
-			previous_on[0].classList.toggle("on");
+		if (left_value == 5*(15-mywidth)) {
+			next_on[0].classList.remove("on");
 		}
 }
 
@@ -92,15 +91,33 @@ document.getElementsByClassName('next')[0].onclick = function() {
 	var mywidth = window.innerWidth;
 	var element_left = document.getElementById('scenes');
 	var left_value = parseInt(window.getComputedStyle(element_left,null).getPropertyValue("left"));
+	var next_on = document.getElementsByClassName('next');
+	var previous_on = document.getElementsByClassName('previous');
 	left_value = left_value + 15 - mywidth + "px";
 	element_left.style.left = left_value;
+	var left_number = parseInt(window.getComputedStyle(element_left,null).getPropertyValue("left"));
+		if (left_number != 0) {
+			previous_on[0].classList.toggle("on", true);
+		}
+		if (left_number == 5*(15-mywidth)) {
+			next_on[0].classList.remove("on");
+		}		
 }
 document.getElementsByClassName('previous')[0].onclick = function() {
 	var mywidth = window.innerWidth;
 	var element_left = document.getElementById('scenes');
 	var left_value = parseInt(window.getComputedStyle(element_left,null).getPropertyValue("left"));
+	var next_on = document.getElementsByClassName('next');
+	var previous_on = document.getElementsByClassName('previous');
 	left_value = left_value - 15 + mywidth + "px";
 	element_left.style.left = left_value;
+	var left_number = parseInt(window.getComputedStyle(element_left,null).getPropertyValue("left"));
+		if (left_value != (15-mywidth)*5) {
+			next_on[0].classList.add("on");
+		}
+		if (left_number == 0) {
+			previous_on[0].classList.remove("on");
+		}		
 }
 
 
